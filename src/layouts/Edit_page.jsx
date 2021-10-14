@@ -73,7 +73,7 @@ const Edit = () => {
       {product.length ? (
         <>
           <h1 className="text-light text-center mb-5 border-bottom border-light pb-4">
-            Изменить товар
+            Редактировать товар
           </h1>
           <div className="d-flex">
             <div className="me-5">
@@ -202,7 +202,7 @@ const Edit = () => {
                     )
                   }
                 >
-                  Edit
+                  Редактировать
                 </button>
               )}
               <div className="form-check mt-2">
