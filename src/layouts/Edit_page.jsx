@@ -72,11 +72,14 @@ const Edit = () => {
     <div className="container edit-page">
       {product.length ? (
         <>
-          <h1 className="text-light text-center mb-5 border-bottom border-light pb-4">
+          <h1
+            className="text-light text-center mb-5 border-bottom border-light pb-4"
+            data-aos="fade-up"
+          >
             Редактировать товар
           </h1>
           <div className="d-flex">
-            <div className="me-5">
+            <div className="me-5" data-aos="zoom-in">
               <img
                 style={{ width: "500px" }}
                 src={newProduct.img.trim() ? newProduct.img : product[0].img}
@@ -84,7 +87,7 @@ const Edit = () => {
               />
             </div>
             <div style={{ flex: "1 1 auto" }} className="card p-4">
-              <div className="mb-3">
+              <div className="mb-3" data-aos="fade-up" data-aos-delay="200">
                 <label htmlFor="name" className="form-label">
                   Название
                 </label>
@@ -98,7 +101,7 @@ const Edit = () => {
                   onChange={(event) => handleChangeInput(event)}
                 />
               </div>
-              <div className="mb-3">
+              <div className="mb-3" data-aos="fade-up" data-aos-delay="400">
                 <label htmlFor="price" className="form-label">
                   Цена
                 </label>
@@ -112,7 +115,7 @@ const Edit = () => {
                   onChange={(event) => handleChangeInput(event)}
                 />
               </div>
-              <div className="mb-3">
+              <div className="mb-3" data-aos="fade-up" data-aos-delay="600">
                 <label htmlFor="img" className="form-label">
                   Фото
                 </label>
@@ -142,7 +145,7 @@ const Edit = () => {
                   />
                 </div>
               ) : (
-                <div className="mb-3">
+                <div className="mb-3" data-aos="fade-up" data-aos-delay="800">
                   <label htmlFor="category" className="form-label">
                     Категория
                   </label>
@@ -161,7 +164,11 @@ const Edit = () => {
                   </select>
                 </div>
               )}
-              <div className="form-check">
+              <div
+                className="form-check"
+                data-aos="fade-up"
+                data-aos-delay="1000"
+              >
                 <input
                   className="form-check-input"
                   type="checkbox"
@@ -172,7 +179,7 @@ const Edit = () => {
                   Изменить на новую категорию
                 </label>
               </div>
-              <div className="mb-3">
+              <div className="mb-3" data-aos="fade-up" data-aos-delay="1200">
                 <label htmlFor="description" className="form-label">
                   Описание
                 </label>
@@ -186,26 +193,30 @@ const Edit = () => {
                   onChange={(event) => handleChangeInput(event)}
                 ></textarea>
               </div>
-              {message ? (
-                <div className="confirm text-success">{message}</div>
-              ) : (
-                <button
-                  className="btn btn-primary"
-                  style={{ width: "100%" }}
-                  onClick={() =>
-                    handleEditProduct(
-                      newProduct.name,
-                      newProduct.price,
-                      newProduct.img,
-                      newProduct.category,
-                      newProduct.description
-                    )
-                  }
-                >
-                  Редактировать
-                </button>
-              )}
-              <div className="form-check mt-2">
+              {message && <div className="confirm text-success">{message}</div>}
+              <button
+                className="btn btn-primary"
+                style={{ width: "100%" }}
+                data-aos="fade-up"
+                data-aos-delay="1400"
+                onClick={() =>
+                  handleEditProduct(
+                    newProduct.name,
+                    newProduct.price,
+                    newProduct.img,
+                    newProduct.category,
+                    newProduct.description
+                  )
+                }
+              >
+                Редактировать
+              </button>
+
+              <div
+                className="form-check mt-2"
+                data-aos="fade-up"
+                data-aos-delay="1600"
+              >
                 <input
                   className="form-check-input"
                   type="checkbox"

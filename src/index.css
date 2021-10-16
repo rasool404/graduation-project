@@ -9,6 +9,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #2f3437;
+  overflow-x: hidden;
 }
 
 a {
@@ -250,4 +251,11 @@ header {
 }
 .edit-page {
   margin-top: 130px;
+}
+.nav-link.active {
+  border-bottom: 2px solid #d8e9a8;
+}
+#profile.active {
+  outline: none;
+  border: 2px solid #d8e9a8;
 }

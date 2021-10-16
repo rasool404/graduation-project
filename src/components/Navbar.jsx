@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tooltip } from "reactstrap";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 const Navbar = () => {
@@ -36,17 +36,21 @@ const Navbar = () => {
 
   return (
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 fixed-top">
-      <Link
+      <NavLink
         to="/"
+        data-aos="fade-up"
         className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-light text-decoration-none header-title"
       >
         <img src={logo} alt="Logo" className="header-logo" />
         <strong>Online Store</strong>
-      </Link>
+      </NavLink>
 
-      <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <ul
+        className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"
+        data-aos="fade-up"
+      >
         <li>
-          <Link
+          <NavLink
             to="/cart"
             className="nav-link px-2 link-light position-relative"
           >
@@ -67,11 +71,11 @@ const Navbar = () => {
             ) : (
               ""
             )}
-          </Link>
+          </NavLink>
         </li>
         <li className="px-2 nav-link text-light position-relative">|</li>
         <li>
-          <Link
+          <NavLink
             to="/favourites"
             className="nav-link px-2 link-light position-relative"
           >
@@ -93,23 +97,36 @@ const Navbar = () => {
             ) : (
               ""
             )}
-          </Link>
+          </NavLink>
         </li>
       </ul>
 
       <div className="col-md-3 text-end">
-        <Link to="/login" className="btn btn-outline-light me-2">
+        <Link
+          to="/login"
+          className="btn btn-outline-light me-2"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
           Войти
         </Link>
-        <Link to="/registration" className="btn btn-warning me-2">
+        <Link
+          to="/registration"
+          className="btn btn-warning me-2"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
           Зарегистрироваться
         </Link>
-        <Link
+        <NavLink
           to="/admin"
           className="btn text-light"
           style={{ outline: "none!important" }}
+          data-aos="fade-left"
+          data-aos-delay="700"
+          id="profile"
         >
-          <i className="fas fa-user" id="profile"></i>
+          <i className="fas fa-user"></i>
           <Tooltip
             placement="bottom"
             isOpen={tooltipProfile}
@@ -118,7 +135,7 @@ const Navbar = () => {
           >
             Профиль
           </Tooltip>
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

@@ -23,11 +23,18 @@ const Favourites = () => {
 
   return (
     <div className="container favourites-container">
-      <h1 className="text-light text-center mb-5 border-bottom border-light pb-4">
+      <h1
+        className="text-light text-center mb-5 border-bottom border-light pb-4"
+        data-aos="fade-up"
+      >
         Изранные
       </h1>
       {products.length ? (
-        <div className="d-flex justify-content-between flex-wrap">
+        <div
+          className="d-flex justify-content-between flex-wrap"
+          data-aos="zoom-in"
+          data-aos-duration="500"
+        >
           {products.map((product, idx) => (
             <div key={idx} className="card p-3 mb-3" style={{ width: "22rem" }}>
               <Link to={`/products/${product.id}`}>
@@ -51,7 +58,13 @@ const Favourites = () => {
           ))}
         </div>
       ) : (
-        <h2 className="text-light text-center">Избранных товаров нет</h2>
+        <h2
+          className="text-light text-center"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
+          Избранных товаров нет
+        </h2>
       )}
     </div>
   );

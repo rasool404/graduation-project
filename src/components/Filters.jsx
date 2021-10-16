@@ -24,7 +24,7 @@ const Filters = ({ state, setProducts }) => {
 
   return (
     <>
-      <div className="card card-filter p-3 mt-3 me-3">
+      <div className="card card-filter p-3 mt-3 me-3" data-aos="flip-right">
         <div className="card-body">
           <h4 className="card-title border-bottom pb-3">Фильтры</h4>
         </div>

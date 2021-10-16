@@ -12,15 +12,20 @@ const Account = () => {
   );
 
   function handleDelete(id) {
-    let newProducts = products;
-    newProducts = newProducts.filter((item) => item.id !== id);
-    setProducts(newProducts);
-    dispatch({ type: "CHANGE_STATE", payload: newProducts });
+    if (window.confirm("Вы действительно хотите удалить?")) {
+      let newProducts = products;
+      newProducts = newProducts.filter((item) => item.id !== id);
+      setProducts(newProducts);
+      dispatch({ type: "CHANGE_STATE", payload: newProducts });
+    }
   }
 
   return (
     <div className="container account-page">
-      <h1 className="text-light text-center mb-5 border-bottom border-light pb-4">
+      <h1
+        className="text-light text-center mb-5 border-bottom border-light pb-4"
+        data-aos="fade-up"
+      >
         Профиль
       </h1>
 
@@ -28,7 +33,11 @@ const Account = () => {
       {products.length ? (
         <>
           <div className="account-page-products-list">
-            <table className="table table-light table-striped  table-bordered">
+            <table
+              className="table table-light table-striped  table-bordered"
+              data-aos="zoom-in"
+              data-aos-delay="400"
+            >
               <thead className="table-dark">
                 <tr>
                   <th scope="col">#</th>
@@ -89,14 +98,14 @@ const Account = () => {
                 })}
               </tbody>
             </table>
-            <Link to="/add-product" className="btn-add">
-              <i className="fas fa-plus text-light"></i>
-            </Link>
           </div>
         </>
       ) : (
         <h3 className="text-light">Товаров нет</h3>
       )}
+      <Link to="/add-product" className="btn-add">
+        <i className="fas fa-plus text-light"></i>
+      </Link>
     </div>
   );
 };

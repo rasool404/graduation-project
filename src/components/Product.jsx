@@ -40,7 +40,11 @@ const Product = ({
     dispatch({ type: "CHANGE_STATE", payload: newState });
   }
   return (
-    <div className="card mb-4 product-card">
+    <div
+      className="card mb-4 product-card"
+      data-aos="zoom-in-left"
+      data-aos-duration="300"
+    >
       <div className="row g-0">
         <div className="col-md-4">
           <Link to={`/products/${id}`}>

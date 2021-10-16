@@ -39,7 +39,7 @@ const Product = () => {
     <div className="container product-page">
       {product.length ? (
         <>
-          <nav aria-label="breadcrumb ">
+          <nav aria-label="breadcrumb" data-aos="fade-up">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link to="/" className="text-dark link">
@@ -54,16 +54,27 @@ const Product = () => {
               </li>
             </ol>
           </nav>
-          <div className="product mb-5">
-            <img src={product[0].img} alt="" className="product__img" />
+          <div className="product mb-5" data-aos="fade-up">
+            <img
+              src={product[0].img}
+              alt=""
+              className="product__img"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            />
             <div className="product__body">
-              <h1 className="my-5">{product[0].name}</h1>
-              <h4 className="my-5">{product[0].description}</h4>
-              <h4 className="my-5">
+              <h1 className="my-5" data-aos="fade-up" data-aos-duration="600">
+                {product[0].name}
+              </h1>
+              <h4 className="my-5" data-aos="fade-up" data-aos-duration="800">
+                {product[0].description}
+              </h4>
+              <h4 className="my-5" data-aos="fade-up">
                 Цена: <strong>{product[0].price * product[0].count}</strong> ₽
               </h4>
               <p className="fs-3">
                 <button
+                  data-aos="zoom-in"
                   onClick={() =>
                     decreaseProductCount(product[0].id, store, dispatch)
                   }
@@ -72,8 +83,11 @@ const Product = () => {
                 >
                   -
                 </button>
-                <strong className="mx-3">{product[0].count}</strong>
+                <strong data-aos="fade-up" className="mx-3">
+                  {product[0].count}
+                </strong>
                 <button
+                  data-aos="zoom-in"
                   onClick={() =>
                     increaseProductCount(product[0].id, store, dispatch)
                   }
@@ -101,14 +115,15 @@ const Product = () => {
               )}
 
               <div
-                to="/cart"
+                data-aos="zoom-in"
+                data-aos-delay="200"
                 onClick={() => handleAddToFavorites(product[0].id)}
                 className="product__favourite"
               >
                 <i className="fas fa-star"></i>
               </div>
             </div>
-            <div className="product__id">
+            <div className="product__id" data-aos="fade-up">
               ID: <strong>{product[0].id}</strong>
             </div>
           </div>

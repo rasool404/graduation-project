@@ -9,16 +9,14 @@ import {
 } from "../utils";
 
 const Cart = () => {
-  //hooks
   const [products, setProducts] = useState([]);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [confirm, setConfirm] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   useEffect(() => {
     setProducts(state.filter((item) => item.activeBasket));
   }, [state]);
-
-  // const
 
   const count = handleCounterCount(state);
   const total = handleCounterTotal(state);
@@ -32,6 +30,8 @@ const Cart = () => {
       });
       dispatch({ type: "CHANGE_STATE", payload: newState });
       setConfirm(true);
+    } else {
+      setErrorMessage(true);
     }
   }
 
@@ -61,21 +61,20 @@ const Cart = () => {
   return (
     <>
       <div className="cart-container">
-        <h1 className="text-light text-center mb-5 border-bottom border-light pb-4">
+        <h1
+          className="text-light text-center mb-5 border-bottom border-light pb-4"
+          data-aos="fade-up"
+        >
           Корзина
         </h1>
         {products.length ? (
           <>
             {products.map((product, idx) => {
               return (
-                <div key={idx} className="cart-item mb-3">
+                <div key={idx} className="cart-item mb-3" data-aos="fade-left">
                   <div className="cart-item-body">
                     <Link to={`/products/${product.id}`}>
-                      <img
-                        src={product.img}
-                        className="cart-item-img"
-                        alt="..."
-                      />
+                      <img src={product.img} className="cart-item-img" alt="" />
                     </Link>
                     <div className="cart-item-info">
                       <div className="cart-item-info-name">
@@ -161,24 +160,43 @@ const Cart = () => {
         ) : (
           <>
             {confirm ? (
-              <h2 className="text-center text-success">
+              <h2 className="text-center text-success" data-aos="zoom-out">
                 Заказ успешно оформлен!
               </h2>
             ) : (
               <>
-                <h2 className="text-center text-light">Корзина пустая</h2>
-                <Link to="/" className="text-light text-center link">
+                <h2 className="text-center text-light" data-aos="fade-up">
+                  Корзина пустая
+                </h2>
+                <Link
+                  to="/"
+                  className="text-light text-center link d-inline-block"
+                  data-aos="fade-up-right"
+                >
                   Добавить первый товар{" "}
                   <span className="badge">
                     <i className="fas fa-external-link-alt"></i>
                   </span>
                 </Link>
+                {errorMessage && (
+                  <h4
+                    className="text-light mt-5 text-center text-danger"
+                    data-aos="zoom-out-up"
+                    data-aos-duration="300"
+                  >
+                    Добавте в корзину хотя бы один товар для оформления заказа
+                  </h4>
+                )}
               </>
             )}
           </>
         )}
       </div>
-      <div className="card card-cart text-center">
+      <div
+        className="card card-cart text-center"
+        data-aos="flip-right"
+        data-aos-delay="1000"
+      >
         <div className="card-header">Оформление заказа</div>
         <ul className="list-group p-4">
           <li className="list-group-item">

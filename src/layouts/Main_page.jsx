@@ -11,6 +11,9 @@ const Main = () => {
 
   const [products, setProducts] = useState(state);
 
+  // pagination page number
+  const [changeCounter, setChangeCounter] = useState(1);
+
   function handleAddToFavorites(id) {
     const newState = products;
     let changeProduct = "";
@@ -39,20 +42,31 @@ const Main = () => {
     <div className="main">
       <div className="container">
         <Search products={products} setProducts={setProducts} state={state} />
-        <Sort products={products} setProducts={setProducts} state={state} />
+        <Sort
+          setChangeCounter={setChangeCounter}
+          products={products}
+          setProducts={setProducts}
+          state={state}
+        />
         <div className="d-flex justify-content-center flex-wrap mt-4">
           {state ? (
             products.length ? (
               <>
                 <Filters state={state} setProducts={setProducts} />
                 <Products
+                  changeCounter={changeCounter}
+                  setChangeCounter={setChangeCounter}
                   products={products}
                   handleAddToFavorites={handleAddToFavorites}
                   handleAddToBasket={handleAddToBasket}
                 />
               </>
             ) : (
-              <div className="error-block mx-auto">
+              <div
+                className="error-block mx-auto"
+                data-aos="zoom-in"
+                data-aos-duration="300"
+              >
                 <h2 className="text-center text-light my-5">
                   Я ничего не нашёл ... :(
                 </h2>

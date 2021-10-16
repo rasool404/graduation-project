@@ -18,7 +18,7 @@ const Search = ({ state, setProducts }) => {
   }
 
   return (
-    <div className="input-group input-group-lg mb-3">
+    <div className="input-group input-group-lg mb-3" data-aos="zoom-in-right">
       <span className="input-group-text" id="basic-addon1">
         <i className="fas fa-search"></i>
       </span>

@@ -81,12 +81,15 @@ const Add_product_page = () => {
 
   return (
     <div className="container add-product">
-      <h1 className="text-light text-center mb-5 border-bottom border-light pb-4">
+      <h1
+        className="text-light text-center mb-5 border-bottom border-light pb-4"
+        data-aos="fade-up"
+      >
         Добавить товар
       </h1>
       <div className="add-product-main">
         <div className="card p-4">
-          <div className="mb-3">
+          <div className="mb-3" data-aos="fade-up" data-aos-delay="200">
             <label htmlFor="name" className="form-label">
               Название
             </label>
@@ -99,7 +102,7 @@ const Add_product_page = () => {
               onChange={(event) => handleChangeInput(event)}
             />
           </div>
-          <div className="mb-3">
+          <div className="mb-3" data-aos="fade-up" data-aos-delay="400">
             <label htmlFor="price" className="form-label">
               Цена
             </label>
@@ -112,7 +115,7 @@ const Add_product_page = () => {
               onChange={(event) => handleChangeInput(event)}
             />
           </div>
-          <div className="mb-3">
+          <div className="mb-3" data-aos="fade-up" data-aos-delay="600">
             <label htmlFor="photo" className="form-label">
               Фото (Url)
             </label>
@@ -125,7 +128,7 @@ const Add_product_page = () => {
               onChange={(event) => handleChangeInput(event)}
             />
           </div>
-          <div className="mb-3">
+          <div className="mb-3" data-aos="fade-up" data-aos-delay="800">
             <label htmlFor="category" className="form-label">
               {ownCategory ? "Новая категория" : "Категория"}
             </label>
@@ -153,7 +156,7 @@ const Add_product_page = () => {
               />
             )}
           </div>
-          <div className="form-check">
+          <div className="form-check" data-aos="fade-up" data-aos-delay="1000">
             <input
               className="form-check-input"
               type="checkbox"
@@ -165,7 +168,7 @@ const Add_product_page = () => {
             </label>
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3" data-aos="fade-up" data-aos-delay="1200">
             <label htmlFor="description" className="form-label">
               Описание
             </label>
@@ -179,7 +182,12 @@ const Add_product_page = () => {
             ></textarea>
           </div>
           {message && (
-            <div className="mb-2" style={{ fontWeight: "500" }}>
+            <div
+              className="mb-2"
+              data-aos="zoom-in"
+              data-aos-duration="200"
+              style={{ fontWeight: "500" }}
+            >
               {message}
             </div>
           )}
@@ -187,6 +195,8 @@ const Add_product_page = () => {
             type="button"
             className="btn btn-success"
             style={{ width: "100%" }}
+            data-aos="fade-up"
+            data-aos-delay="1400"
             onClick={() =>
               handleAddNewProduct(
                 createProduct.name,

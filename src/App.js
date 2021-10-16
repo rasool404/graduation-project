@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+
 import {
   BrowserRouter as Router,
   Redirect,
@@ -15,7 +17,15 @@ import Login from "./layouts/Login_page";
 import Registration from "./layouts/Registration_page";
 import AddProduct from "./layouts/Add_product_page";
 
+import Aos from "aos";
+
 function App() {
+  useEffect(() => {
+    Aos.init({
+      duration: "1000"
+    });
+  }, []);
+
   return (
     <Router>
       <Navbar />

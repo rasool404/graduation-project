@@ -3,10 +3,14 @@ import { useState } from "react";
 import Product from "./Product";
 import PropTypes from "prop-types";
 
-const Products = ({ products, handleAddToFavorites, handleAddToBasket }) => {
+const Products = ({
+  products,
+  handleAddToFavorites,
+  handleAddToBasket,
+  setChangeCounter,
+  changeCounter
+}) => {
   const [newProducts, setNewProducts] = useState();
-
-  const [changeCounter, setChangeCounter] = useState(1);
 
   const counterPagination = 2;
   const startCounterPagination = -1;
@@ -30,7 +34,7 @@ const Products = ({ products, handleAddToFavorites, handleAddToBasket }) => {
     ) {
       setChangeCounter(1);
     }
-  }, [changeCounter, products, startCounterPagination]);
+  }, [changeCounter, products, startCounterPagination, setChangeCounter]);
 
   function fillArray(num) {
     const newArr = [];
@@ -52,6 +56,7 @@ const Products = ({ products, handleAddToFavorites, handleAddToBasket }) => {
   function handleChangePage(item) {
     setChangeCounter(item);
   }
+
   return (
     <div>
       {newProducts && (
