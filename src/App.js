@@ -44,7 +44,7 @@ function App() {
             <Cart mode={mode} />
           </Route>
           <Route path="/favourites">
-            <Favourites />
+            <Favourites mode={mode} />
           </Route>
           <Route path="/login">
             <Login />
@@ -53,16 +53,16 @@ function App() {
             <Registration />
           </Route>
           <Route path="/admin">
-            <Account />
+            <Account mode={mode} />
           </Route>
           <Route path="/add-product">
-            <AddProduct />
+            <AddProduct mode={mode} />
           </Route>
           <Route path="/products/:id">
-            <Product />
+            <Product mode={mode} />
           </Route>
           <Route path="/edit/:id">
-            <Edit />
+            <Edit mode={mode} />
           </Route>
 
           <Redirect to="/" />

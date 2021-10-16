@@ -10,6 +10,7 @@ import {
   decreaseProductCount
 } from "../utils";
 import PropTypes from "prop-types";
+import Title from "../components/Title";
 
 const Cart = ({ mode }) => {
   const [products, setProducts] = useState([]);
@@ -61,11 +62,6 @@ const Cart = ({ mode }) => {
     dispatch({ type: "HANDLE_FAVORITE", payload: changeProduct });
   }
 
-  function headerColor() {
-    return mode
-      ? { color: "#000", borderColor: "#000!important" }
-      : { color: "#fff", borderColor: "#fff!important" };
-  }
   function textColor() {
     return mode ? { color: "#000" } : { color: "#fff" };
   }
@@ -78,102 +74,10 @@ const Cart = ({ mode }) => {
   return (
     <>
       <div className="cart-container">
-        <h1
-          className={`text-center mb-5 border-bottom pb-4`}
-          data-aos="fade-up"
-          data-aos-once="true"
-          style={headerColor()}
-        >
-          Корзина
-        </h1>
+        <Title mode={mode}>Корзина</Title>
         {products.length ? (
           <div className="container">
             {products.map((product, idx) => {
-              // return (
-              // <div key={idx} className="cart-item mb-3" data-aos="fade-left">
-              //   <div className="cart-item-body">
-              //     <Link to={`/products/${product.id}`}>
-              //       <img src={product.img} className="cart-item-img" alt="" />
-              //     </Link>
-              //     <div className="cart-item-info">
-              //       <div className="cart-item-info-name">
-              //         <p>
-              //           <Link
-              //             to={`/products/${product.id}`}
-              //             className="text-dark link"
-              //           >
-              //             <strong>{product.name}</strong>
-              //           </Link>
-              //         </p>
-              //         <p>
-              //           <Link
-              //             to={`/products/${product.id}`}
-              //             className="text-dark link"
-              //           >
-              //             ID: <strong>{product.id}</strong>
-              //           </Link>
-              //         </p>
-              //         <p>
-              //           Категория: <strong>{product.category}</strong>
-              //         </p>
-              //       </div>
-              //       <div className="cart-item-info-count">
-              //         <p>
-              //           <button
-              //             onClick={() =>
-              //               decreaseProductCount(product.id, state, dispatch)
-              //             }
-              //             type="button"
-              //             className="btn btn-secondary btn-sm mx-2"
-              //           >
-              //             -
-              //           </button>
-              //           <strong>{product.count}</strong>
-              //           <button
-              //             onClick={() =>
-              //               increaseProductCount(product.id, state, dispatch)
-              //             }
-              //             type="button"
-              //             className="btn btn-secondary btn-sm ms-2"
-              //           >
-              //             +
-              //           </button>
-              //         </p>
-              //       </div>
-              //       <div className="cart-item-info-price">
-              //         <p>
-              //           <strong>{product.price * product.count}</strong> ₽
-              //         </p>
-              //         <button
-              //           type="button"
-              //           className={`btn btn-${
-              //             product.activeFavorite ? "danger" : "warning"
-              //           }`}
-              //           onClick={() => handleAddToFavorites(product.id)}
-              //         >
-              //           {product.activeFavorite
-              //             ? "Удалить из избранного"
-              //             : "Добавить в избранное"}
-              //           <span className="badge">
-              //             <i
-              //               className={`fas fa-star ${
-              //                 product.activeFavorite
-              //                   ? "text-light"
-              //                   : "text-dark"
-              //               }`}
-              //             ></i>
-              //           </span>
-              //         </button>
-              //       </div>
-              //       <button
-              //         type="button"
-              //         className="btn-close"
-              //         onClick={() => deleteFromBasket(product.id)}
-              //       ></button>
-              //     </div>
-              //   </div>
-              // </div>
-              // );
               return (
                 <div
                   className="cart-product"

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
+import PropTypes from "prop-types";
+import Title from "../components/Title";
 
-const Account = () => {
+const Account = ({ mode }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -22,12 +24,7 @@ const Account = () => {
 
   return (
     <div className="container account-page">
-      <h1
-        className="text-light text-center mb-5 border-bottom border-light pb-4"
-        data-aos="fade-up"
-      >
-        Профиль
-      </h1>
+      <Title mode={mode}>Профиль</Title>
 
       <Search state={state} setProducts={setProducts} />
       {products.length ? (
@@ -109,5 +106,7 @@ const Account = () => {
     </div>
   );
 };
-
+Account.propTypes = {
+  mode: PropTypes.bool
+};
 export default Account;

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { categories } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
+import Title from "../components/Title";
 
-const Add = () => {
+const Add = ({ mode }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [products] = useState(
@@ -81,12 +83,7 @@ const Add = () => {
 
   return (
     <div className="container add-product">
-      <h1
-        className="text-light text-center mb-5 border-bottom border-light pb-4"
-        data-aos="fade-up"
-      >
-        Добавить товар
-      </h1>
+      <Title mode={mode}>Добавить товар</Title>
       <div className="add-product-main">
         <div className="card p-4">
           <div className="mb-3" data-aos="fade-up" data-aos-delay="200">
@@ -219,6 +216,10 @@ const Add = () => {
       </div>
     </div>
   );
+};
+
+Add.propTypes = {
+  mode: PropTypes.bool
 };
 
 export default Add;

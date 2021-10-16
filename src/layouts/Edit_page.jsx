@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import Title from "../components/Title";
 import { categories } from "../store";
+import PropTypes from "prop-types";
 
-const Edit = () => {
+const Edit = ({ mode }) => {
   const { id } = useParams();
   const store = useSelector((store) => store);
   const [product] = useState(store.filter((item) => item.id === Number(id)));
@@ -72,12 +74,7 @@ const Edit = () => {
     <div className="container edit-page">
       {product.length ? (
         <>
-          <h1
-            className="text-light text-center mb-5 border-bottom border-light pb-4"
-            data-aos="fade-up"
-          >
-            Редактировать товар
-          </h1>
+          <Title mode={mode}>Редактировать товар</Title>
           <div className="d-flex">
             <div className="me-5" data-aos="zoom-in">
               <img
@@ -245,5 +242,7 @@ const Edit = () => {
     </div>
   );
 };
-
+Edit.propTypes = {
+  mode: PropTypes.bool
+};
 export default Edit;
