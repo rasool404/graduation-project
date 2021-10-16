@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { categories } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 
-const Add_product_page = () => {
+const Add = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [products] = useState(
@@ -63,7 +63,7 @@ const Add_product_page = () => {
         img: "",
         description: ""
       });
-      let isUniqueCategory = categories.some((el) => {
+      const isUniqueCategory = categories.some((el) => {
         return el === createProduct.category;
       });
       if (!isUniqueCategory) {
@@ -221,4 +221,4 @@ const Add_product_page = () => {
   );
 };
 
-export default Add_product_page;
+export default Add;

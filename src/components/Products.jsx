@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import PropTypes from "prop-types";
 
@@ -115,7 +114,9 @@ const Products = ({
 Products.propTypes = {
   products: PropTypes.array.isRequired,
   handleAddToFavorites: PropTypes.func.isRequired,
-  handleAddToBasket: PropTypes.func.isRequired
+  handleAddToBasket: PropTypes.func.isRequired,
+  setChangeCounter: PropTypes.func,
+  changeCounter: PropTypes.number
 };
 
 export default Products;

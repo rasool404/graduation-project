@@ -117,7 +117,7 @@ const defaultState = [
 ];
 
 // Push categories
-let allCategories = [];
+const allCategories = [];
 defaultState.forEach((i) => allCategories.push(i.category));
 
 const uniqueArr = allCategories.filter(

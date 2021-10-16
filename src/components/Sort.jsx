@@ -76,7 +76,8 @@ const Sort = ({ products, setProducts, state, setChangeCounter }) => {
 Sort.propTypes = {
   products: PropTypes.array.isRequired,
   setProducts: PropTypes.func.isRequired,
-  state: PropTypes.array.isRequired
+  state: PropTypes.array.isRequired,
+  setChangeCounter: PropTypes.func
 };
 
 export default Sort;

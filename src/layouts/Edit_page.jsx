@@ -47,7 +47,7 @@ const Edit = () => {
       description: ""
     });
 
-    let canPush = categories.some((el) => {
+    const canPush = categories.some((el) => {
       return el === newProduct.category;
     });
     if (!canPush) {
