@@ -26,40 +26,48 @@ function App() {
     });
   }, []);
 
+  const [mode, setMode] = React.useState(true);
+
   return (
     <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-        <Route path="/favourites">
-          <Favourites />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/registration">
-          <Registration />
-        </Route>
-        <Route path="/admin">
-          <Account />
-        </Route>
-        <Route path="/add-product">
-          <AddProduct />
-        </Route>
-        <Route path="/products/:id">
-          <Product />
-        </Route>
-        <Route path="/edit/:id">
-          <Edit />
-        </Route>
+      <Navbar mode={mode} setMode={setMode} />
+      <main
+        style={
+          mode ? { backgroundColor: "#eee" } : { backgroundColor: "#2F3437" }
+        }
+      >
+        <Switch>
+          <Route exact path="/">
+            <Main mode={mode} />
+          </Route>
+          <Route path="/cart">
+            <Cart mode={mode} />
+          </Route>
+          <Route path="/favourites">
+            <Favourites />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/registration">
+            <Registration />
+          </Route>
+          <Route path="/admin">
+            <Account />
+          </Route>
+          <Route path="/add-product">
+            <AddProduct />
+          </Route>
+          <Route path="/products/:id">
+            <Product />
+          </Route>
+          <Route path="/edit/:id">
+            <Edit />
+          </Route>
 
-        <Redirect to="/" />
-      </Switch>
+          <Redirect to="/" />
+        </Switch>
+      </main>
     </Router>
   );
 }

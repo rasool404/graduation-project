@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,13 +9,14 @@ import {
   increaseProductCount,
   decreaseProductCount
 } from "../utils";
+import PropTypes from "prop-types";
 
-const Cart = () => {
+const Cart = ({ mode }) => {
   const [products, setProducts] = useState([]);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const [confirm, setConfirm] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(false);
+
   useEffect(() => {
     setProducts(state.filter((item) => item.activeBasket));
   }, [state]);
@@ -58,97 +61,218 @@ const Cart = () => {
     dispatch({ type: "HANDLE_FAVORITE", payload: changeProduct });
   }
 
+  function headerColor() {
+    return mode
+      ? { color: "#000", borderColor: "#000!important" }
+      : { color: "#fff", borderColor: "#fff!important" };
+  }
+  function textColor() {
+    return mode ? { color: "#000" } : { color: "#fff" };
+  }
+  function textColorListItem() {
+    return mode
+      ? { color: "#000" }
+      : { color: "#fff", backgroundColor: "#333", borderColor: "#fff" };
+  }
+
   return (
     <>
       <div className="cart-container">
         <h1
-          className="text-light text-center mb-5 border-bottom border-light pb-4"
+          className={`text-center mb-5 border-bottom pb-4`}
           data-aos="fade-up"
+          data-aos-once="true"
+          style={headerColor()}
         >
           Корзина
         </h1>
         {products.length ? (
-          <>
+          <div className="container">
             {products.map((product, idx) => {
+              // return (
+              // <div key={idx} className="cart-item mb-3" data-aos="fade-left">
+              //   <div className="cart-item-body">
+              //     <Link to={`/products/${product.id}`}>
+              //       <img src={product.img} className="cart-item-img" alt="" />
+              //     </Link>
+              //     <div className="cart-item-info">
+              //       <div className="cart-item-info-name">
+              //         <p>
+              //           <Link
+              //             to={`/products/${product.id}`}
+              //             className="text-dark link"
+              //           >
+              //             <strong>{product.name}</strong>
+              //           </Link>
+              //         </p>
+              //         <p>
+              //           <Link
+              //             to={`/products/${product.id}`}
+              //             className="text-dark link"
+              //           >
+              //             ID: <strong>{product.id}</strong>
+              //           </Link>
+              //         </p>
+              //         <p>
+              //           Категория: <strong>{product.category}</strong>
+              //         </p>
+              //       </div>
+              //       <div className="cart-item-info-count">
+              //         <p>
+              //           <button
+              //             onClick={() =>
+              //               decreaseProductCount(product.id, state, dispatch)
+              //             }
+              //             type="button"
+              //             className="btn btn-secondary btn-sm mx-2"
+              //           >
+              //             -
+              //           </button>
+              //           <strong>{product.count}</strong>
+              //           <button
+              //             onClick={() =>
+              //               increaseProductCount(product.id, state, dispatch)
+              //             }
+              //             type="button"
+              //             className="btn btn-secondary btn-sm ms-2"
+              //           >
+              //             +
+              //           </button>
+              //         </p>
+              //       </div>
+              //       <div className="cart-item-info-price">
+              //         <p>
+              //           <strong>{product.price * product.count}</strong> ₽
+              //         </p>
+              //         <button
+              //           type="button"
+              //           className={`btn btn-${
+              //             product.activeFavorite ? "danger" : "warning"
+              //           }`}
+              //           onClick={() => handleAddToFavorites(product.id)}
+              //         >
+              //           {product.activeFavorite
+              //             ? "Удалить из избранного"
+              //             : "Добавить в избранное"}
+              //           <span className="badge">
+              //             <i
+              //               className={`fas fa-star ${
+              //                 product.activeFavorite
+              //                   ? "text-light"
+              //                   : "text-dark"
+              //               }`}
+              //             ></i>
+              //           </span>
+              //         </button>
+              //       </div>
+              //       <button
+              //         type="button"
+              //         className="btn-close"
+              //         onClick={() => deleteFromBasket(product.id)}
+              //       ></button>
+              //     </div>
+              //   </div>
+              // </div>
+              // );
               return (
-                <div key={idx} className="cart-item mb-3" data-aos="fade-left">
-                  <div className="cart-item-body">
+                <div
+                  className="cart-product"
+                  key={idx}
+                  data-aos="zoom-in"
+                  style={
+                    mode
+                      ? {
+                          boxShadow:
+                            "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+                        }
+                      : {
+                          backgroundColor: "#333",
+                          border: "1px solid white",
+                          color: "#fff"
+                        }
+                  }
+                >
+                  <div className="cart-product__img">
                     <Link to={`/products/${product.id}`}>
-                      <img src={product.img} className="cart-item-img" alt="" />
+                      <img src={product.img} alt="" />
                     </Link>
-                    <div className="cart-item-info">
-                      <div className="cart-item-info-name">
-                        <p>
-                          <Link
-                            to={`/products/${product.id}`}
-                            className="text-dark link"
-                          >
-                            <strong>{product.name}</strong>
-                          </Link>
-                        </p>
-                        <p>
-                          <Link
-                            to={`/products/${product.id}`}
-                            className="text-dark link"
-                          >
-                            ID: <strong>{product.id}</strong>
-                          </Link>
-                        </p>
-                        <p>
-                          Категория: <strong>{product.category}</strong>
-                        </p>
-                      </div>
-                      <div className="cart-item-info-count">
-                        <p>
-                          <button
-                            onClick={() =>
-                              decreaseProductCount(product.id, state, dispatch)
-                            }
-                            type="button"
-                            className="btn btn-secondary btn-sm mx-2"
-                          >
-                            -
-                          </button>
-                          <strong>{product.count}</strong>
-                          <button
-                            onClick={() =>
-                              increaseProductCount(product.id, state, dispatch)
-                            }
-                            type="button"
-                            className="btn btn-secondary btn-sm ms-2"
-                          >
-                            +
-                          </button>
-                        </p>
-                      </div>
-                      <div className="cart-item-info-price">
-                        <p>
-                          <strong>{product.price * product.count}</strong> ₽
-                        </p>
-                        <button
-                          type="button"
-                          className={`btn btn-${
-                            product.activeFavorite ? "danger" : "warning"
-                          }`}
-                          onClick={() => handleAddToFavorites(product.id)}
+                  </div>
+                  <div className="cart-product__body">
+                    <div className="cart-product__info">
+                      <h4>
+                        <Link
+                          to={`/products/${product.id}`}
+                          style={textColor()}
                         >
-                          {product.activeFavorite
-                            ? "Удалить из избранного"
-                            : "Добавить в избранное"}
-                          <span className="badge">
-                            <i
-                              className={`fas fa-star ${
-                                product.activeFavorite
-                                  ? "text-light"
-                                  : "text-dark"
-                              }`}
-                            ></i>
-                          </span>
+                          {product.name}
+                        </Link>
+                      </h4>
+                      <h6>
+                        <Link
+                          to={`/products/${product.id}`}
+                          style={textColor()}
+                        >
+                          ID: <strong>{product.id}</strong>
+                        </Link>
+                      </h6>
+                      <p style={textColor()}>
+                        Категория: <strong>{product.category}</strong>{" "}
+                      </p>
+                      <h5 style={textColor()}>
+                        Стоимость:{" "}
+                        <strong>{product.price * product.count}</strong> ₽
+                      </h5>
+                      <h5 style={textColor()} className="mb-5 mt-3">
+                        <button
+                          onClick={() =>
+                            decreaseProductCount(product.id, state, dispatch)
+                          }
+                          type="button"
+                          className="btn btn-secondary btn-sm mx-2"
+                        >
+                          -
                         </button>
-                      </div>
+                        <strong>{product.count}</strong>
+                        <button
+                          onClick={() =>
+                            increaseProductCount(product.id, state, dispatch)
+                          }
+                          type="button"
+                          className="btn btn-secondary btn-sm ms-2"
+                        >
+                          +
+                        </button>
+                      </h5>
+                      <button
+                        type="button"
+                        className={`btn btn-${
+                          product.activeFavorite ? "danger" : "warning"
+                        }`}
+                        onClick={() => handleAddToFavorites(product.id)}
+                      >
+                        {product.activeFavorite
+                          ? "Удалить из избранного"
+                          : "Добавить в избранное"}
+                        <span className="badge">
+                          <i
+                            className={`fas fa-star ${
+                              product.activeFavorite
+                                ? "text-light"
+                                : "text-dark"
+                            }`}
+                          ></i>
+                        </span>
+                      </button>
                       <button
                         type="button"
                         className="btn-close"
+                        style={
+                          mode
+                            ? {}
+                            : {
+                                backgroundColor: "#fff"
+                              }
+                        }
                         onClick={() => deleteFromBasket(product.id)}
                       ></button>
                     </div>
@@ -156,7 +280,43 @@ const Cart = () => {
                 </div>
               );
             })}
-          </>
+            <div
+              className="card card-cart text-center"
+              data-aos="zoom-in"
+              style={
+                mode
+                  ? {
+                      boxShadow:
+                        "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+                    }
+                  : {
+                      backgroundColor: "#333",
+                      border: "1px solid white",
+                      color: "#fff"
+                    }
+              }
+            >
+              <div className="card-header" style={textColor()}>
+                Оформление заказа
+              </div>
+              <ul className="list-group p-4">
+                <li className="list-group-item" style={textColorListItem()}>
+                  Итого: <strong>{count}</strong>
+                </li>
+                <li className="list-group-item" style={textColorListItem()}>
+                  Итоговая сумма: <strong>{total}</strong> ₽
+                </li>
+              </ul>
+              <button
+                type="button"
+                className={`btn btn-${confirm ? "success" : "primary"}`}
+                onClick={handleConfirm}
+                style={{ width: "100%" }}
+              >
+                {confirm ? "Заказ успешно оформлен" : "Оформить заказ"}
+              </button>
+            </div>
+          </div>
         ) : (
           <>
             {confirm ? (
@@ -165,58 +325,37 @@ const Cart = () => {
               </h2>
             ) : (
               <>
-                <h2 className="text-center text-light" data-aos="fade-up">
+                <h2
+                  className="text-center"
+                  style={textColor()}
+                  data-aos="fade-up"
+                >
                   Корзина пустая
                 </h2>
                 <Link
                   to="/"
-                  className="text-light text-center link d-inline-block"
+                  className=" text-center link d-inline-block"
                   data-aos="fade-up-right"
+                  style={textColor()}
                 >
                   Добавить первый товар{" "}
                   <span className="badge">
-                    <i className="fas fa-external-link-alt"></i>
+                    <i
+                      className="fas fa-external-link-alt"
+                      style={textColor()}
+                    ></i>
                   </span>
                 </Link>
-                {errorMessage && (
-                  <h4
-                    className="text-light mt-5 text-center text-danger"
-                    data-aos="zoom-out-up"
-                    data-aos-duration="300"
-                  >
-                    Добавте в корзину хотя бы один товар для оформления заказа
-                  </h4>
-                )}
               </>
             )}
           </>
         )}
       </div>
-      <div
-        className="card card-cart text-center"
-        data-aos="flip-right"
-        data-aos-delay="1000"
-      >
-        <div className="card-header">Оформление заказа</div>
-        <ul className="list-group p-4">
-          <li className="list-group-item">
-            Итого: <strong>{count}</strong>
-          </li>
-          <li className="list-group-item">
-            Итоговая сумма: <strong>{total}</strong> ₽
-          </li>
-        </ul>
-        <button
-          type="button"
-          className={`btn btn-${confirm ? "success" : "primary"}`}
-          onClick={handleConfirm}
-          style={{ width: "100%" }}
-        >
-          {confirm ? "Заказ успешно оформлен" : "Оформить заказ"}
-        </button>
-      </div>
     </>
   );
 };
 
+Cart.propTypes = {
+  mode: PropTypes.bool
+};
 export default Cart;

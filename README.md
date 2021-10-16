@@ -2,6 +2,6 @@
 
 npm i && npm start
 
-# Deploy:
+# Deploy
 
 https://graduation-project-livid.vercel.app/

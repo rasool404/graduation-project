@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Sort = ({ products, setProducts, state, setChangeCounter }) => {
+const Sort = ({ products, setProducts, state, setChangeCounter, mode }) => {
   function handleSort(nameSort) {
     const saveProducts = [...products];
     switch (nameSort) {
@@ -29,7 +29,11 @@ const Sort = ({ products, setProducts, state, setChangeCounter }) => {
   return (
     <>
       <div className="sort">
-        <h4 className="text-white text-center" data-aos="fade-down-left">
+        <h4
+          className="text-center"
+          data-aos="fade-down-left"
+          style={mode ? { color: "#000" } : { color: "#fff" }}
+        >
           Сортировка
         </h4>
         <div className="d-flex justify-content-between flex-wrap mt-3">
@@ -77,7 +81,8 @@ Sort.propTypes = {
   products: PropTypes.array.isRequired,
   setProducts: PropTypes.func.isRequired,
   state: PropTypes.array.isRequired,
-  setChangeCounter: PropTypes.func
+  setChangeCounter: PropTypes.func,
+  mode: PropTypes.bool
 };
 
 export default Sort;

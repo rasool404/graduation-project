@@ -1,11 +1,14 @@
+/* eslint-disable */
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Filters from "../components/Filters";
 import Products from "../components/Products";
 import Search from "../components/Search";
 import Sort from "../components/Sort";
+import PropTypes from "prop-types";
 
-const Main = () => {
+const Main = ({ mode }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -39,7 +42,7 @@ const Main = () => {
   }
 
   return (
-    <div className="main">
+    <div className="main-page">
       <div className="container">
         <Search products={products} setProducts={setProducts} state={state} />
         <Sort
@@ -47,8 +50,9 @@ const Main = () => {
           products={products}
           setProducts={setProducts}
           state={state}
+          mode={mode}
         />
-        <div className="d-flex justify-content-center flex-wrap mt-4">
+        {/* <div className="d-flex justify-content-center flex-wrap mt-4">
           {state ? (
             products.length ? (
               <>
@@ -88,9 +92,54 @@ const Main = () => {
               </div>
             </div>
           )}
+        </div> */}
+        <div className="main-page-main">
+          {state ? (
+            products.length ? (
+              <>
+                <Filters state={state} setProducts={setProducts} mode={mode} />
+                <Products
+                  changeCounter={changeCounter}
+                  setChangeCounter={setChangeCounter}
+                  products={products}
+                  handleAddToFavorites={handleAddToFavorites}
+                  handleAddToBasket={handleAddToBasket}
+                  mode={mode}
+                />
+              </>
+            ) : (
+              <div
+                className="mx-auto"
+                data-aos="zoom-in"
+                data-aos-duration="300"
+                style={mode ? { color: "#000" } : { color: "#fff" }}
+              >
+                <h2 className="text-center my-5">Я ничего не нашёл ... :(</h2>
+                <h5 className="text-center">
+                  Но я смотрел везде где можно, честно! <br /> Под каждым
+                  камнем, за каждым углом я искал то что <br /> Вы просили, но
+                  всё тщетно ...
+                </h5>
+              </div>
+            )
+          ) : (
+            <div className="d-flex justify-content-center">
+              <div
+                className="spinner-border text-light"
+                style={{ width: "3rem", height: "3rem" }}
+                role="status"
+              >
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
+};
+
+Main.propTypes = {
+  mode: PropTypes.bool
 };
 export default Main;

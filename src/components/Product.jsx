@@ -14,7 +14,8 @@ const Product = ({
   id,
   handleAddToFavorites,
   handleAddToBasket,
-  category
+  category,
+  mode
 }) => {
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
@@ -41,94 +42,92 @@ const Product = ({
   }
   return (
     <div
-      className="card mb-4 product-card"
+      className="product-block"
       data-aos="zoom-in-left"
       data-aos-duration="300"
+      style={
+        mode
+          ? {
+              boxShadow:
+                "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px"
+            }
+          : {
+              backgroundColor: "#333",
+              border: "1px solid white",
+              color: "#fff"
+            }
+      }
     >
-      <div className="row g-0">
-        <div className="col-md-4">
-          <Link to={`/products/${id}`}>
-            <img src={img} style={{ maxWidth: "380px" }} alt="img" />
-          </Link>
-        </div>
-        <div className="col-md-8">
-          <div className="card-body">
-            <h5 className="card-title">
-              <Link
-                className="card-title text-dark link"
-                to={`/products/${id}`}
-              >
-                {name}
-              </Link>
-            </h5>
-            <p className="card-text">{description}</p>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item mb-4">
-                ЦЕНА: <strong>{price}</strong> ₽
-              </li>
-              <li className="list-group-item mb-4">
-                <Link to={`/products/${id}`} className="text-dark link">
-                  ID ТОВАРА: <strong>{id}</strong>
-                </Link>
-              </li>
-              <li className="list-group-item mb-4">
-                КАТЕГОРИЯ: <strong>{category}</strong>
-              </li>
-              <li className="list-group-item mb-4">
-                КОЛИЧЕСТВО:
-                <button
-                  onClick={() => decreaseProductCount(id)}
-                  type="button"
-                  className="btn btn-secondary btn-sm mx-2"
-                >
-                  -
-                </button>
-                <strong>{count}</strong>
-                <button
-                  onClick={() => increaseProductCount(id)}
-                  type="button"
-                  className="btn btn-secondary btn-sm ms-2"
-                >
-                  +
-                </button>
-              </li>
-              <li className="list-group-item row">
-                <button
-                  onClick={() => handleAddToBasket(id)}
-                  className={`btn btn-${activeBasket ? "danger" : "primary"}`}
-                >
-                  {activeBasket ? "Удалить из корзины" : "Добавить в корзину"}
-                  <span className="badge">
-                    <i
-                      className={`fas fa-${
-                        activeBasket ? "times" : "shopping-cart"
-                      }`}
-                    ></i>
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleAddToFavorites(id)}
-                  className={`btn btn-${
-                    activeFavorite ? "danger" : "warning"
-                  } mt-3`}
-                >
-                  {activeFavorite
-                    ? "Удалить из избранного"
-                    : "Добавить в избранное"}
-                  <span className="badge">
-                    <i
-                      className={`fas fa-star ${
-                        activeFavorite ? "text-light" : "text-dark"
-                      }`}
-                    ></i>
-                  </span>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <Link to={`/products/${id}`} className="product-block__img">
+        <img src={img} alt="" />
+      </Link>
+      <div className="product-block__body">
+        <Link
+          to={`/products/${id}`}
+          className="product-block__title"
+          style={mode ? {} : { color: "#fff" }}
+        >
+          {name}
+        </Link>
+        <p className="product-block__description">{description}</p>
+        <p className="product-block__price">
+          ЦЕНА: <strong>{price}</strong> ₽
+        </p>
+        <Link
+          to={`/products/${id}`}
+          className="product-block__id"
+          style={mode ? {} : { color: "#fff" }}
+        >
+          ID ТОВАРА: <strong>{id}</strong>
+        </Link>
+        <p className="product-block__category">
+          КАТЕГОРИЯ: <strong>{category}</strong>
+        </p>
+        <p>
+          КОЛИЧЕСТВО:
+          <button
+            onClick={() => decreaseProductCount(id)}
+            type="button"
+            className="btn btn-secondary btn-sm mx-2"
+          >
+            -
+          </button>
+          <strong>{count}</strong>
+          <button
+            onClick={() => increaseProductCount(id)}
+            type="button"
+            className="btn btn-secondary btn-sm ms-2"
+          >
+            +
+          </button>
+        </p>
+        <p className="product-block__buttons">
+          <button
+            onClick={() => handleAddToBasket(id)}
+            className={`btn btn-${activeBasket ? "danger" : "primary"}`}
+          >
+            {activeBasket ? "Удалить из корзины" : "Добавить в корзину"}
+            <span className="badge">
+              <i
+                className={`fas fa-${activeBasket ? "times" : "shopping-cart"}`}
+              ></i>
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleAddToFavorites(id)}
+            className={`btn btn-${activeFavorite ? "danger" : "warning"} `}
+          >
+            {activeFavorite ? "Удалить из избранного" : "Добавить в избранное"}
+            <span className="badge">
+              <i
+                className={`fas fa-star ${
+                  activeFavorite ? "text-light" : "text-dark"
+                }`}
+              ></i>
+            </span>
+          </button>
+        </p>
       </div>
     </div>
   );
@@ -145,7 +144,8 @@ Product.propTypes = {
   id: PropTypes.number.isRequired,
   handleAddToFavorites: PropTypes.func.isRequired,
   handleAddToBasket: PropTypes.func.isRequired,
-  category: PropTypes.string
+  category: PropTypes.string,
+  mode: PropTypes.bool
 };
 
 export default Product;
