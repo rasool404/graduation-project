@@ -16,6 +16,7 @@ body {
 main {
   padding-top: 130px;
   min-height: 100vh;
+  padding-bottom: 20px;
 }
 @media (max-width: 768px) {
   main {
@@ -66,6 +67,14 @@ main {
   padding: 8px;
   display: block;
 }
+.header__cart.active,
+.header__favourites.active {
+  border-bottom: 2px solid orangered;
+}
+.header__admin.active {
+  border-radius: 20px;
+  border: 2px solid orangered;
+}
 
 .header__status {
   position: absolute;
@@ -77,6 +86,9 @@ main {
 .header__end {
   display: flex;
   align-items: center;
+}
+.header__admin {
+  padding: 10px;
 }
 .header__mode {
   margin-right: 10px;
@@ -192,7 +204,6 @@ main {
 }
 .product-block__buttons {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -222,6 +233,7 @@ main {
   }
   .product-block__buttons .btn {
     margin-bottom: 10px;
+    margin-right: 0 !important;
   }
   .product-block__img {
     margin: 0 auto;
@@ -246,8 +258,8 @@ main {
 }
 .cart-product .btn-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 5px;
+  right: 5px;
 }
 
 @media (max-width: 768px) {
@@ -258,6 +270,14 @@ main {
   .cart-product .mb-5 {
     margin-bottom: 10px !important;
   }
+}
+
+.add-card {
+  width: 90%;
+}
+
+.account-page {
+  padding-bottom: 100px;
 }
 
 .form-log-wrapper {
@@ -312,8 +332,8 @@ main {
 }
 
 .product__img {
-  width: 500px;
-  height: 500px;
+  width: 30%;
+  height: 30%;
 }
 .product__body {
   position: relative;
@@ -329,6 +349,12 @@ main {
   padding: 30px;
   background-color: #eee;
   cursor: pointer;
+  border: 1px solid black;
+  transition: all 0.3s ease;
+}
+.product__button:hover {
+  background-color: #ccc;
+  color: #000;
 }
 .product__id {
   position: absolute;
@@ -358,8 +384,7 @@ main {
 .breadcrumb-item p {
   display: inline;
 }
-.account-page {
-}
+
 .table-img {
   position: relative;
 }

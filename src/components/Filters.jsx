@@ -36,12 +36,16 @@ const Filters = ({ state, setProducts, mode }) => {
         }
       >
         <h3
-          className="filter__title"
-          style={mode ? { color: "#000" } : { color: "#fff" }}
+          className="filter__title pb-3"
+          style={
+            mode
+              ? { color: "#000", borderBottom: "1px solid #000" }
+              : { color: "#fff", borderBottom: "1px solid #fff" }
+          }
         >
           Фильтры
         </h3>
-        <hr />
+
         <div className="filter__body">
           <h4 style={mode ? { color: "#000" } : { color: "#fff" }}>По цене</h4>
           <div className="input-group my-3 mb-5">

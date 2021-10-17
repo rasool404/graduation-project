@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 
-const Search = ({ state, setProducts }) => {
+const Search = ({ state, setProducts, mode }) => {
   const search = useRef("");
 
   function handleSearch(event) {
@@ -18,7 +18,11 @@ const Search = ({ state, setProducts }) => {
   }
 
   return (
-    <div className="input-group input-group-lg mb-3" data-aos="zoom-in-right">
+    <div
+      className="input-group input-group-lg mb-3"
+      data-aos="zoom-in-right"
+      style={mode ? { boxShadow: "rgba(0, 0, 0, 0.15) 0px 2px 8px" } : {}}
+    >
       <span className="input-group-text" id="basic-addon1">
         <i className="fas fa-search"></i>
       </span>
@@ -34,7 +38,8 @@ const Search = ({ state, setProducts }) => {
 
 Search.propTypes = {
   state: PropTypes.array.isRequired,
-  setProducts: PropTypes.func.isRequired
+  setProducts: PropTypes.func.isRequired,
+  mode: PropTypes.bool
 };
 
 export default Search;

@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import PropTypes from "prop-types";

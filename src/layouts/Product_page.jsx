@@ -70,7 +70,11 @@ const Product = () => {
                 {product[0].description}
               </h4>
               <h4 className="my-5" data-aos="fade-up">
-                Цена: <strong>{product[0].price * product[0].count}</strong> ₽
+                Цена:{" "}
+                <strong>
+                  {(product[0].price * product[0].count).toLocaleString("ru")}
+                </strong>{" "}
+                ₽
               </h4>
               <p className="fs-3">
                 <button

@@ -71,7 +71,7 @@ const Product = ({
         </Link>
         <p className="product-block__description">{description}</p>
         <p className="product-block__price">
-          ЦЕНА: <strong>{price}</strong> ₽
+          ЦЕНА: <strong>{price.toLocaleString("ru")}</strong> ₽
         </p>
         <Link
           to={`/products/${id}`}
@@ -101,10 +101,10 @@ const Product = ({
             +
           </button>
         </p>
-        <p className="product-block__buttons">
+        <div className="product-block__buttons">
           <button
             onClick={() => handleAddToBasket(id)}
-            className={`btn btn-${activeBasket ? "danger" : "primary"}`}
+            className={`btn me-5 btn-${activeBasket ? "danger" : "primary"}`}
           >
             {activeBasket ? "Удалить из корзины" : "Добавить в корзину"}
             <span className="badge">
@@ -114,7 +114,6 @@ const Product = ({
             </span>
           </button>
           <button
-            type="button"
             onClick={() => handleAddToFavorites(id)}
             className={`btn btn-${activeFavorite ? "danger" : "warning"} `}
           >
@@ -127,7 +126,7 @@ const Product = ({
               ></i>
             </span>
           </button>
-        </p>
+        </div>
       </div>
     </div>
   );

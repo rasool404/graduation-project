@@ -83,7 +83,18 @@ const Edit = ({ mode }) => {
                 alt=""
               />
             </div>
-            <div style={{ flex: "1 1 auto" }} className="card p-4">
+            <div
+              className="card p-4"
+              style={
+                mode
+                  ? {
+                      boxShadow:
+                        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
+                      flex: "1 1 auto"
+                    }
+                  : { flex: "1 1 auto" }
+              }
+            >
               <div className="mb-3" data-aos="fade-up" data-aos-delay="200">
                 <label htmlFor="name" className="form-label">
                   Название

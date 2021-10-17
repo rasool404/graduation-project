@@ -38,7 +38,19 @@ const Navbar = ({ mode, setMode }) => {
   return (
     <header
       className="header"
-      style={mode ? { backgroundColor: "#ccc" } : { backgroundColor: "#333" }}
+      style={
+        mode
+          ? {
+              backgroundColor: "#F7F6F3",
+              boxShadow:
+                "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px"
+            }
+          : {
+              backgroundColor: "#373C3F",
+              boxShadow:
+                "rgba(238,238,238, 0.1) 0px 4px 16px, rgba(238,238,238, 0.1) 0px 8px 24px, rgba(238,238,238, 0.1) 0px 16px 56px"
+            }
+      }
     >
       <div className="container">
         <div className="header__row">

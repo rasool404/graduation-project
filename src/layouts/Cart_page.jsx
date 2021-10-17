@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -34,8 +32,6 @@ const Cart = ({ mode }) => {
       });
       dispatch({ type: "CHANGE_STATE", payload: newState });
       setConfirm(true);
-    } else {
-      setErrorMessage(true);
     }
   }
 
@@ -73,7 +69,7 @@ const Cart = ({ mode }) => {
 
   return (
     <>
-      <div className="cart-container">
+      <div className="cart-container container">
         <Title mode={mode}>Корзина</Title>
         {products.length ? (
           <div className="container">
@@ -123,8 +119,11 @@ const Cart = ({ mode }) => {
                         Категория: <strong>{product.category}</strong>{" "}
                       </p>
                       <h5 style={textColor()}>
-                        Стоимость:{" "}
-                        <strong>{product.price * product.count}</strong> ₽
+                        Стоимость: &nbsp;
+                        <strong>
+                          {(product.price * product.count).toLocaleString("ru")}
+                        </strong>{" "}
+                        ₽
                       </h5>
                       <h5 style={textColor()} className="mb-5 mt-3">
                         <button
@@ -208,7 +207,8 @@ const Cart = ({ mode }) => {
                   Итого: <strong>{count}</strong>
                 </li>
                 <li className="list-group-item" style={textColorListItem()}>
-                  Итоговая сумма: <strong>{total}</strong> ₽
+                  Итоговая сумма: &nbsp;
+                  <strong>{total.toLocaleString("ru")}</strong> ₽
                 </li>
               </ul>
               <button

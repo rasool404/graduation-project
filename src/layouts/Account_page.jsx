@@ -59,7 +59,7 @@ const Account = ({ mode }) => {
                         </Link>
                       </td>
                       <td>{product.category}</td>
-                      <td>{product.price} ₽</td>
+                      <td>{product.price.toLocaleString("ru")} ₽</td>
                       <td className="table-img">
                         <a
                           className="text-dark link"

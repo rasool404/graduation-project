@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Filters from "../components/Filters";
@@ -44,7 +42,12 @@ const Main = ({ mode }) => {
   return (
     <div className="main-page">
       <div className="container">
-        <Search products={products} setProducts={setProducts} state={state} />
+        <Search
+          products={products}
+          setProducts={setProducts}
+          state={state}
+          mode={mode}
+        />
         <Sort
           setChangeCounter={setChangeCounter}
           products={products}
