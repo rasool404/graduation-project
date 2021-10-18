@@ -92,7 +92,7 @@ const Navbar = ({ mode, setMode }) => {
             </NavLink>
           </div>
           <div className="header__end">
-            <div className="header__mode">
+            <div className="header__mode" data-aos="fade-up">
               <i
                 className={`fas fa-${mode ? "moon" : "sun"}`}
                 onClick={() => setMode((prev) => !prev)}
@@ -118,9 +118,11 @@ const Navbar = ({ mode, setMode }) => {
                 Sign in
               </Link>
             </div>
-            <NavLink to="/admin" className="header__admin" data-aos="fade-up">
-              <i className="fas fa-user" style={modeColor()}></i>
-            </NavLink>
+            <div className="header__admin" data-aos="fade-up">
+              <NavLink to="/admin">
+                <i className="fas fa-user" style={modeColor()}></i>
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>

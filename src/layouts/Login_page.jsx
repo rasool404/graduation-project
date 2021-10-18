@@ -1,73 +1,63 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../assets/logo.svg";
+import { useInput } from "../utils";
+// import { Link } from "react-router-dom";
+// import logo from "../assets/logo.svg";
 
 const Login = () => {
+  const email = useInput("", { isEmpty: true, isEmail: true });
+  const password = useInput("", { isEmpty: true, minLength: 6 });
   return (
-    <div className="form-log-wrapper text-center">
-      <div className="form-log">
-        <form>
-          <img
-            className="mb-4"
-            src={logo}
-            alt="Logo"
-            width="120"
-            height="100"
-            data-aos="zoom-in"
-          />
-          <h1
-            className="mb-3 fw-bold text-light"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            Войти
-          </h1>
+    <div className="login container">
+      <form>
+        <h1 data-aos="zoom-in">Login</h1>
+        <input
+          onChange={(e) => email.onChange(e)}
+          onBlur={(e) => email.onBlur(e)}
+          value={email.value}
+          type="email"
+          placeholder="Email"
+          className={
+            email.isDirty && email.isEmpty && email.minLengthError && "error"
+          }
+          data-aos="fade-up"
+        />
+        {email.isDirty && email.isEmpty && (
+          <p className="error-text">Поле не может быть пустым</p>
+        )}
+        {email.isDirty && email.isEmail && (
+          <p className="error-text">Введите корректный email</p>
+        )}
 
-          <div
-            className="form-floating mb-3"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <input
-              type="email"
-              className="form-control"
-              id="floatingInput"
-              placeholder="name@example.com"
-            />
-            <label htmlFor="floatingInput">Email address</label>
-          </div>
-          <div
-            className="form-floating mb-5"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-            <input
-              type="password"
-              className="form-control"
-              id="floatingPassword"
-              placeholder="Password"
-            />
-            <label htmlFor="floatingPassword">Password</label>
-          </div>
-          <Link
-            to="/"
-            className="w-100 btn btn-lg btn-primary mb-2"
-            type="submit"
-            data-aos="fade-up"
-            data-aos-delay="800"
-          >
-            Войти
-          </Link>
-          <Link
-            to="/registration"
-            className="text-light link d-block"
-            data-aos="fade-up"
-            data-aos-delay="1000"
-          >
-            Зарегистрироваться
-          </Link>
-        </form>
-      </div>
+        <input
+          onChange={(e) => password.onChange(e)}
+          onBlur={(e) => password.onBlur(e)}
+          value={password.value}
+          type="password"
+          placeholder="Password"
+          className={
+            password.isDirty &&
+            password.isEmpty &&
+            password.minLengthError &&
+            "error"
+          }
+          data-aos="fade-up"
+          data-aos-delay="200"
+        />
+        {password.isDirty && password.isEmpty && (
+          <p className="error-text">Поле не может быть пустым</p>
+        )}
+        {password.isDirty && password.minLengthError && (
+          <p className="error-text">Некорректная длина (6)</p>
+        )}
+        <button
+          disabled={!email.inputValid || !password.inputValid}
+          type="submit"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

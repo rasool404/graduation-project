@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { decreaseProductCount, increaseProductCount } from "../utils";
 
 const Product = () => {
   const { id } = useParams();
@@ -33,6 +32,28 @@ const Product = () => {
       }
     });
     dispatch({ type: "HANDLE_FAVORITE", payload: changeProduct });
+  }
+
+  function increaseProductCount(id) {
+    const newState = store;
+    newState.forEach((product) => {
+      if (product.id === +id) {
+        product.count++;
+      }
+    });
+    dispatch({ type: "CHANGE_STATE", payload: newState });
+  }
+
+  function decreaseProductCount(id) {
+    const newState = store;
+    newState.forEach((product) => {
+      if (product.id === +id) {
+        if (product.count > 1) {
+          product.count--;
+        }
+      }
+    });
+    dispatch({ type: "CHANGE_STATE", payload: newState });
   }
 
   return (

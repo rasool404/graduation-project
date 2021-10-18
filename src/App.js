@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   const [mode, setMode] = React.useState();
-
+  const authorized = true;
   return (
     <Router>
       <Navbar mode={mode} setMode={setMode} />
@@ -52,15 +52,6 @@ function App() {
           <Route path="/favourites">
             <Favourites mode={mode} />
           </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/registration">
-            <Registration />
-          </Route>
-          <Route path="/admin">
-            <Account mode={mode} />
-          </Route>
           <Route path="/add-product">
             <AddProduct mode={mode} />
           </Route>
@@ -70,8 +61,19 @@ function App() {
           <Route path="/edit/:id">
             <Edit mode={mode} />
           </Route>
+          {authorized && (
+            <Route path="/admin">
+              <Account mode={mode} />
+            </Route>
+          )}
 
-          <Redirect to="/" />
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/registration">
+            <Registration />
+          </Route>
+          {authorized ? <Redirect to="/" /> : <Redirect to="/login" />}
         </Switch>
       </main>
     </Router>

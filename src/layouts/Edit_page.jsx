@@ -64,6 +64,7 @@ const Edit = ({ mode }) => {
 
   function handleCheckbox() {
     setOwnCategory((prev) => !prev);
+    newProduct.category = "";
   }
 
   function handleShowOldValues() {

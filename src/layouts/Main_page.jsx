@@ -55,47 +55,6 @@ const Main = ({ mode }) => {
           state={state}
           mode={mode}
         />
-        {/* <div className="d-flex justify-content-center flex-wrap mt-4">
-          {state ? (
-            products.length ? (
-              <>
-                <Filters state={state} setProducts={setProducts} />
-                <Products
-                  changeCounter={changeCounter}
-                  setChangeCounter={setChangeCounter}
-                  products={products}
-                  handleAddToFavorites={handleAddToFavorites}
-                  handleAddToBasket={handleAddToBasket}
-                />
-              </>
-            ) : (
-              <div
-                className="error-block mx-auto"
-                data-aos="zoom-in"
-                data-aos-duration="300"
-              >
-                <h2 className="text-center text-light my-5">
-                  Я ничего не нашёл ... :(
-                </h2>
-                <h5 className="text-light text-center">
-                  Но я смотрел везде где можно, честно! <br /> Под каждым
-                  камнем, за каждым углом я искал то что <br /> Вы просили, но
-                  всё тщетно ...
-                </h5>
-              </div>
-            )
-          ) : (
-            <div className="d-flex justify-content-center">
-              <div
-                className="spinner-border text-light"
-                style={{ width: "3rem", height: "3rem" }}
-                role="status"
-              >
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            </div>
-          )}
-        </div> */}
         <div className="main-page-main">
           {state ? (
             products.length ? (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { categories } from "../store";
-import { handleMax } from "../utils";
+
 import PropTypes from "prop-types";
 
 const Filters = ({ state, setProducts, mode }) => {
@@ -22,6 +22,17 @@ const Filters = ({ state, setProducts, mode }) => {
     );
   }
 
+  function handleMax(state) {
+    let summ = 0;
+    state &&
+      state.forEach((item) => {
+        if (summ < item.price) {
+          summ = item.price;
+        }
+      });
+    return summ;
+  }
+
   return (
     <>
       <div
@@ -34,6 +45,7 @@ const Filters = ({ state, setProducts, mode }) => {
               }
             : { backgroundColor: "#333", border: "1px solid white" }
         }
+        data-aos="fade-right"
       >
         <h3
           className="filter__title pb-3"

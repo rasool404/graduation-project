@@ -59,55 +59,6 @@ const Products = ({
 
   return (
     <>
-      {/* {newProducts && (
-        <div className="products d-flex flex-wrap justify-content-center mt-3">
-          {newProducts.map((product) => {
-            return (
-              <Product
-                key={product.id}
-                name={product.name}
-                price={product.price}
-                img={product.img}
-                description={product.description}
-                count={product.count}
-                activeBasket={product.activeBasket}
-                activeFavorite={product.activeFavorite}
-                id={product.id}
-                handleAddToFavorites={handleAddToFavorites}
-                handleAddToBasket={handleAddToBasket}
-                category={product.category}
-              />
-            );
-          })}
-          {lengthPagination.length > 1 && (
-            <nav className="my-5">
-              <ul className="pagination pagination-lg justify-content-center">
-                <li className="page-item" onClick={() => decrPage()}>
-                  <div className="page-link">
-                    <span>&laquo;</span>
-                  </div>
-                </li>
-                {lengthPagination.map((i) => (
-                  <li
-                    key={i}
-                    className={`page-item  ${
-                      i === changeCounter ? "active" : ""
-                    }`}
-                    onClick={() => handleChangePage(i)}
-                  >
-                    <div className="page-link">{i}</div>
-                  </li>
-                ))}
-                <li className="page-item" onClick={() => incPage()}>
-                  <div className="page-link">
-                    <span>&raquo;</span>
-                  </div>
-                </li>
-              </ul>
-            </nav>
-          )}
-        </div>
-      )} */}
       {newProducts && (
         <>
           <div className="products">

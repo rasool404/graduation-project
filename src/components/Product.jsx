@@ -19,6 +19,7 @@ const Product = ({
 }) => {
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
+
   function increaseProductCount(id) {
     const newState = store;
     newState.forEach((product) => {

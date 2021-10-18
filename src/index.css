@@ -71,7 +71,11 @@ main {
 .header__favourites.active {
   border-bottom: 2px solid orangered;
 }
-.header__admin.active {
+.header__admin a {
+  padding: 10px;
+}
+.header__admin a.active {
+  display: block;
   border-radius: 20px;
   border: 2px solid orangered;
 }
@@ -88,7 +92,6 @@ main {
   align-items: center;
 }
 .header__admin {
-  padding: 10px;
 }
 .header__mode {
   margin-right: 10px;
@@ -280,46 +283,6 @@ main {
   padding-bottom: 100px;
 }
 
-.form-log-wrapper {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #2f3437;
-}
-.form-log {
-  width: 100%;
-  max-width: 800px;
-  padding: 15px;
-  margin: auto;
-}
-
-.form-log .checkbox {
-  font-weight: 400;
-}
-
-.form-log .form-floating:focus-within {
-  z-index: 2;
-}
-
-.form-log input[type="email"] {
-  margin-bottom: 10px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-log input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.favourites-container {
-}
-.product-page {
-}
-
 .product {
   background-color: #fff;
   position: relative;
@@ -434,4 +397,46 @@ main {
 #profile.active {
   outline: none;
   border: 2px solid #d8e9a8;
+}
+
+.login {
+  display: flex;
+  height: calc(100vh - 150px);
+  justify-content: center;
+  align-items: center;
+}
+
+.login form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  width: 50%;
+}
+.login form h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.login form input {
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
+}
+
+.login form button {
+  width: 100%;
+  background-color: blue;
+  color: white;
+  border: 0;
+  padding: 10px;
+}
+
+.login form input.error {
+  border-color: red;
+}
+
+.error-text {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: red;
 }

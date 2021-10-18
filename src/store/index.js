@@ -46,7 +46,6 @@ const defaultState = [
     category: "Планшеты",
     count: 1,
     description: "2360x1640, IPS, 6х3.1 ГГц, BT, iPadOS",
-    fullDescription: "",
     activeBasket: false,
     activeFavorite: false
   },
@@ -58,7 +57,6 @@ const defaultState = [
     category: "Планшеты",
     count: 1,
     description: "2388x1668, IPS, 8, 8 ГБ, BT, iPadOS",
-    fullDescription: "",
     activeBasket: false,
     activeFavorite: false
   },
@@ -71,7 +69,6 @@ const defaultState = [
     count: 1,
     description:
       "2560x1600, IPS, Apple M1, 8, RAM 16 ГБ, SSD 256 ГБ, M1 7-core , Wi-Fi, macOS",
-    fullDescription: "",
     activeBasket: false,
     activeFavorite: false
   },
@@ -84,7 +81,6 @@ const defaultState = [
     count: 1,
     description:
       "2560x1600, IPS, Apple M1, 8, RAM 16 ГБ, SSD 256 ГБ, M1 8-core , Wi-Fi, macOS",
-    fullDescription: "",
     activeBasket: false,
     activeFavorite: false
   },
@@ -97,7 +93,6 @@ const defaultState = [
     count: 1,
     description:
       "Intel Core i7, 8x3800 МГц, IPS, 5120x2880, 16 ГБ DDR4, SSD 1000 ГБ, AMD Radeon Pro 5500 XT, Mac OS X",
-    fullDescription: "",
     activeBasket: false,
     activeFavorite: false
   },
@@ -110,7 +105,6 @@ const defaultState = [
     count: 1,
     description:
       "корпус - серый, ремешок - черный, iOS 14 и выше, крепление - на руку, Bluetooth, Wi-Fi, WR50",
-    fullDescription: "",
     activeBasket: false,
     activeFavorite: false
   }

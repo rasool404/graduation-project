@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  handleCounterCount,
-  handleCounterTotal,
-  increaseProductCount,
-  decreaseProductCount
-} from "../utils";
 import PropTypes from "prop-types";
 import Title from "../components/Title";
 
@@ -20,8 +14,8 @@ const Cart = ({ mode }) => {
     setProducts(state.filter((item) => item.activeBasket));
   }, [state]);
 
-  const count = handleCounterCount(state);
-  const total = handleCounterTotal(state);
+  const count = handleCounterCount();
+  const total = handleCounterTotal();
 
   function handleConfirm() {
     if (products.length) {
@@ -56,6 +50,48 @@ const Cart = ({ mode }) => {
       }
     });
     dispatch({ type: "HANDLE_FAVORITE", payload: changeProduct });
+  }
+
+  function increaseProductCount(id) {
+    const newState = state;
+    newState.forEach((product) => {
+      if (product.id === Number(id)) {
+        product.count++;
+      }
+    });
+    dispatch({ type: "CHANGE_STATE", payload: newState });
+  }
+
+  function decreaseProductCount(id) {
+    const newState = state;
+    newState.forEach((product) => {
+      if (product.id === Number(id)) {
+        if (product.count > 1) {
+          product.count--;
+        }
+      }
+    });
+    dispatch({ type: "CHANGE_STATE", payload: newState });
+  }
+
+  function handleCounterCount() {
+    let counter = 0;
+    state.forEach((el) => {
+      if (el.activeBasket) {
+        counter += el.count;
+      }
+    });
+    return counter;
+  }
+
+  function handleCounterTotal() {
+    let total = 0;
+    state.forEach((el) => {
+      if (el.activeBasket) {
+        total += el.price * el.count;
+      }
+    });
+    return total;
   }
 
   function textColor() {
