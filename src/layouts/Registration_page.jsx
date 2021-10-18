@@ -10,17 +10,14 @@ const Registration = () => {
   return (
     <div className="login container">
       <form>
-        <h1 data-aos="zoom-in">Registration</h1>
+        <h1>Registration</h1>
         <input
           onChange={(e) => email.onChange(e)}
           onBlur={(e) => email.onBlur(e)}
           value={email.value}
           type="email"
           placeholder="Email"
-          className={
-            email.isDirty && email.isEmpty && email.minLengthError && "error"
-          }
-          data-aos="fade-up"
+          className={email.isDirty && email.isEmpty && "error"}
         />
         {email.isDirty && email.isEmpty && (
           <p className="error-text">Поле не может быть пустым</p>
@@ -41,8 +38,6 @@ const Registration = () => {
             password.minLengthError &&
             "error"
           }
-          data-aos="fade-up"
-          data-aos-delay="200"
         />
         {password.isDirty && password.isEmpty && (
           <p className="error-text">Поле не может быть пустым</p>
@@ -53,8 +48,6 @@ const Registration = () => {
         <button
           disabled={!email.inputValid || !password.inputValid}
           type="submit"
-          data-aos="fade-up"
-          data-aos-delay="400"
         >
           Submit
         </button>
