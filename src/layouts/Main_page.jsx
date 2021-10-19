@@ -53,7 +53,7 @@ const Main = ({ mode }) => {
         <div className="main-page-main">
           {state ? (
             <>
-              <Filters state={products} setProducts={setProducts} mode={mode} />
+              <Filters state={state} setProducts={setProducts} mode={mode} />
               {products.length ? (
                 <Products
                   changeCounter={changeCounter}
@@ -73,7 +73,7 @@ const Main = ({ mode }) => {
                       : { color: "#fff", width: "50vw" }
                   }
                 >
-                  <h2 className="text-center my-5">Я ничего не нашёл ... :</h2>
+                  <h2 className="text-center my-5">Я ничего не нашёл ... :(</h2>
                   <h5 className="text-center">
                     Но я смотрел везде где можно, честно! <br /> Под каждым
                     камнем, за каждым углом я искал то что <br /> Вы просили, но
