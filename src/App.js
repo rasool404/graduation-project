@@ -22,7 +22,7 @@ import Aos from "aos";
 function App() {
   useEffect(() => {
     Aos.init({
-      duration: "1000",
+      duration: "500",
       once: true
     });
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {

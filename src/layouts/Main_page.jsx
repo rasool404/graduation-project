@@ -42,12 +42,7 @@ const Main = ({ mode }) => {
   return (
     <div className="main-page">
       <div className="container">
-        <Search
-          products={products}
-          setProducts={setProducts}
-          state={state}
-          mode={mode}
-        />
+        <Search setProducts={setProducts} state={state} mode={mode} />
         <Sort
           setChangeCounter={setChangeCounter}
           products={products}
@@ -57,9 +52,9 @@ const Main = ({ mode }) => {
         />
         <div className="main-page-main">
           {state ? (
-            products.length ? (
-              <>
-                <Filters state={state} setProducts={setProducts} mode={mode} />
+            <>
+              <Filters state={products} setProducts={setProducts} mode={mode} />
+              {products.length ? (
                 <Products
                   changeCounter={changeCounter}
                   setChangeCounter={setChangeCounter}
@@ -68,27 +63,30 @@ const Main = ({ mode }) => {
                   handleAddToBasket={handleAddToBasket}
                   mode={mode}
                 />
-              </>
-            ) : (
-              <div
-                className="mx-auto"
-                data-aos="zoom-in"
-                data-aos-duration="300"
-                style={mode ? { color: "#000" } : { color: "#fff" }}
-              >
-                <h2 className="text-center my-5">Я ничего не нашёл ... :(</h2>
-                <h5 className="text-center">
-                  Но я смотрел везде где можно, честно! <br /> Под каждым
-                  камнем, за каждым углом я искал то что <br /> Вы просили, но
-                  всё тщетно ...
-                </h5>
-              </div>
-            )
+              ) : (
+                <div
+                  data-aos="zoom-in"
+                  data-aos-duration="300"
+                  style={
+                    mode
+                      ? { color: "#000", width: "50vw" }
+                      : { color: "#fff", width: "50vw" }
+                  }
+                >
+                  <h2 className="text-center my-5">Я ничего не нашёл ... :</h2>
+                  <h5 className="text-center">
+                    Но я смотрел везде где можно, честно! <br /> Под каждым
+                    камнем, за каждым углом я искал то что <br /> Вы просили, но
+                    всё тщетно ...
+                  </h5>
+                </div>
+              )}
+            </>
           ) : (
             <div className="d-flex justify-content-center">
               <div
                 className="spinner-border text-light"
-                style={{ width: "3rem", height: "3rem" }}
+                style={{ width: "5rem", height: "5rem" }}
                 role="status"
               >
                 <span className="visually-hidden">Loading...</span>

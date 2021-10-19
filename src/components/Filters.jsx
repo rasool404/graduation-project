@@ -11,8 +11,8 @@ const Filters = ({ state, setProducts, mode }) => {
       state.filter((item) => {
         if (String(priceFrom).length && String(priceTo).length) {
           return (
-            item.price >= Number(priceFrom) &&
-            item.price <= Number(priceTo) &&
+            Number(item.price) >= Number(priceFrom) &&
+            Number(item.price) <= Number(priceTo) &&
             item.category.includes(category)
           );
         } else {
@@ -67,7 +67,10 @@ const Filters = ({ state, setProducts, mode }) => {
               placeholder="От"
               value={price.from}
               onChange={(event) =>
-                setPrice({ ...price, from: event.target.value })
+                setPrice({
+                  ...price,
+                  from: Number(event.target.value.replace(/\s+/g, ""))
+                })
               }
             />
             <span className="input-group-text">$</span>
@@ -77,7 +80,10 @@ const Filters = ({ state, setProducts, mode }) => {
               placeholder="До"
               value={price.to}
               onChange={(event) =>
-                setPrice({ ...price, to: event.target.value })
+                setPrice({
+                  ...price,
+                  to: Number(event.target.value.replace(/\s+/g, ""))
+                })
               }
             />
           </div>

@@ -27,6 +27,12 @@ const Account = ({ mode }) => {
       <Title mode={mode}>Профиль</Title>
 
       <Search state={state} setProducts={setProducts} />
+
+      <div data-aos="zoom-in" className="btn-add">
+        <Link to="/add-product">
+          <i className="fas fa-plus text-light"></i>
+        </Link>
+      </div>
       {products.length ? (
         <>
           <div className="account-page-products-list">
@@ -100,9 +106,6 @@ const Account = ({ mode }) => {
       ) : (
         <h3 className="text-light">Товаров нет</h3>
       )}
-      <Link to="/add-product" className="btn-add">
-        <i className="fas fa-plus text-light"></i>
-      </Link>
     </div>
   );
 };

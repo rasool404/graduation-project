@@ -372,9 +372,9 @@ main {
   align-items: center;
 }
 .btn-add {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
   width: 70px;
@@ -385,10 +385,10 @@ main {
   justify-content: center;
   align-items: center;
   border: 2px solid white;
+  cursor: pointer;
+  z-index: 1;
 }
-.btn-add:hover {
-  color: #fff;
-}
+
 .edit-page {
 }
 .nav-link.active {

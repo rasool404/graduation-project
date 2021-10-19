@@ -19,13 +19,21 @@ const Cart = ({ mode }) => {
 
   function handleConfirm() {
     if (products.length) {
-      const newState = state;
-      newState.forEach((product) => {
-        product.count = 1;
-        product.activeBasket = false;
-      });
-      dispatch({ type: "CHANGE_STATE", payload: newState });
-      setConfirm(true);
+      if (
+        window.confirm(
+          "Вы действительно хотите оформить заказ. Сумма " +
+            total.toLocaleString("ru") +
+            " ₽"
+        )
+      ) {
+        const newState = state;
+        newState.forEach((product) => {
+          product.count = 1;
+          product.activeBasket = false;
+        });
+        dispatch({ type: "CHANGE_STATE", payload: newState });
+        setConfirm(true);
+      }
     }
   }
 

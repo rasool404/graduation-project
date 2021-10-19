@@ -77,13 +77,6 @@ const Edit = ({ mode }) => {
         <>
           <Title mode={mode}>Редактировать товар</Title>
           <div className="d-flex">
-            <div className="me-5" data-aos="zoom-in">
-              <img
-                style={{ width: "500px" }}
-                src={newProduct.img.trim() ? newProduct.img : product[0].img}
-                alt=""
-              />
-            </div>
             <div
               className="card p-4"
               style={
