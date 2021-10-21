@@ -88,7 +88,7 @@ const defaultState = [
     id: 8,
     name: "27'' Моноблок Apple iMac 27 Retina 5K",
     price: 281999,
-    img: "https://c.dns-shop.ru/thumb/st1/fit/0/0/6f37730db529f11f7e54587743a1099a/c9a38650679025a8abd607ccb1e86ca817787be6886eb115bee243a95cb4f6b1.jpg",
+    img: "https://c.dns-shop.ru/thumb/st4/fit/0/0/8fadfeb5c0db2965832ed9c2e7bef89c/99b6b31932be3c27a248b1ee89671926df3754ca6f71b88eef53bc134b31c0bb.jpg",
     category: "Компьютеры",
     count: 1,
     description:

@@ -39,7 +39,6 @@ const Account = ({ mode }) => {
             <table
               className="table table-light table-striped  table-bordered"
               data-aos="zoom-in"
-              data-aos-delay="400"
             >
               <thead className="table-dark">
                 <tr>
@@ -104,7 +103,7 @@ const Account = ({ mode }) => {
           </div>
         </>
       ) : (
-        <h3 className="text-light">Товаров нет</h3>
+        <h3 className={mode ? "text-dark" : "text-light"}>Товаров нет</h3>
       )}
     </div>
   );

@@ -47,7 +47,6 @@ const Sort = ({ products, setProducts, state, setChangeCounter, mode }) => {
           </button>
           <button
             data-aos="fade-down-right"
-            data-aos-delay="300"
             type="button"
             className="btn btn-info me-2 mt-1"
             onClick={() => handleSort("")}
@@ -56,7 +55,6 @@ const Sort = ({ products, setProducts, state, setChangeCounter, mode }) => {
           </button>
           <button
             data-aos="fade-down-left"
-            data-aos-delay="300"
             type="button"
             className="btn btn-success me-2 mt-1"
             onClick={() => handleSort("latest")}

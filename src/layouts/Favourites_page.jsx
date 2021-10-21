@@ -76,7 +76,6 @@ const Favourites = ({ mode }) => {
         <h2
           className=" text-center"
           data-aos="fade-up"
-          data-aos-delay="500"
           style={mode ? { color: "#000" } : { color: "#fff" }}
         >
           Избранных товаров нет
